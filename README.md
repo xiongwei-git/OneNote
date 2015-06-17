@@ -3,3 +3,6 @@
 
 # ScreenShot
 ![img](https://github.com/xiongwei-git/OneNote/blob/master/ScreenShot/Screenshot_2015-06-17-17-44-05.png)
+
+![img](https://github.com/xiongwei-git/OneNote/blob/master/ScreenShot/Screenshot_2015-06-17-17-44-28.png)
+
