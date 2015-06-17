@@ -1,0 +1,27 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowBackground">@drawable/transparent_drawable</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowAnimationStyle">@style/MainActivityAnimation</item>
+        <item name="colorPrimary">@color/material_blue_500</item>
+        <item name="colorPrimaryDark">@color/transparent</item>
+        <item name="colorAccent">@color/material_green_A200</item>
+    </style>
+
+
+    <style name="MainActivityAnimation" parent="@android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@null</item>
+        <item name="android:activityOpenExitAnimation">@anim/anim_fragment_out</item>
+        <item name="android:activityCloseEnterAnimation">@anim/anim_fragment_close_in</item>
+        <item name="android:activityCloseExitAnimation">@anim/anim_fragment_close_out</item>
+    </style>
+
+    <style name="AnimationPopupWindow">
+        <item name="android:windowEnterAnimation">@anim/popwindow_fade_in</item>
+        <item name="android:windowExitAnimation">@anim/popwindow_fade_out</item>
+    </style>
+
+</resources>

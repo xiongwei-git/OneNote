@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical"
+              android:id="@+id/widget_layout"
+              android:background="@drawable/widget_bg_default" android:layout_width="fill_parent" android:layout_height="fill_parent"
+              android:layout_margin="8.0dip" android:animateLayoutChanges="true"
+              xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <TextView android:textSize="16.0sp" android:textColor="#ffffffff"
+              android:id="@+id/widget_update" android:padding="8.0dip"
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+              android:text=""
+              android:lineSpacingExtra="8.0px"
+              android:fontFamily="sans-serif-light"/>
+
+</LinearLayout>

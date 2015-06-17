@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">OneNote</string>
+
+    <string name="clear">Clear</string>
+    <string name="remember">Record</string>
+    <string name="share">Share</string>
+
+    <string name="share_to_note">Add to OneNote</string>
+    <string name="please_sure">Please confirm</string>
+    <string name="delete_all_data">Clear all data？</string>
+    <string name="copy">Copy</string>
+    <string name="please_choose">Please choose</string>
+    <string name="share_tips">Clear all data or Share to</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="you_just_clear_all_data">You just clear all data\u000d</string>
+    <string name="not_clear">Oh,no</string>
+    <string name="touch_to_input">Touch here to input!</string>
+    <string name="have_add_clip">The clipboard contents have been added to note</string>
+    <string name="have_add_share">The share contents have been added to note</string>
+
+    <string name="config_title">Config:</string>
+    <string name="config_color">Color</string>
+    <string name="config_developer">Developer</string>
+    <string name="config_course">Tips</string>
+
+    <string name="about_developer">About Developer</string>
+    <string name="developer_description">熊伟(Ted)\nAndroid app developer\n http://mrxiong.com/</string>
+    <string name="close">Close</string>
+    <string name="praise_developer">Praise</string>
+
+    <string name="courses_title">Tips:</string>
+    <string name="courses_1">1.You can fast save any copied text to mobile phone by shaking it.\n</string>
+    <string name="courses_2">2.To share the text with other Application, using the application "OneNote" to quick save\n</string>
+    <string name="courses_3">3.We are developing more functions, Surprise is waiting for you!</string>
+
+    <string name="main_menu_item_1">Copy to</string>
+    <string name="main_menu_item_2">Clear All</string>
+    <string name="main_menu_item_3">How to use</string>
+    <string name="main_menu_item_4">About me</string>
+
+    <string name="main_menu_item_set_app">Setting</string>
+    <string name="app_set_color_title">Color Picker</string>
+    <string name="app_set_color_saturation">Saturation</string>
+    <string name="app_set_color_opacity">Opacity</string>
+    <string name="app_set_color_set_default">Reset</string>
+    <string name="app_set_color_set_color">Get it</string>
+</resources>

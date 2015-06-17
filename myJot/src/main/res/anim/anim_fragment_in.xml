@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android"
+    android:interpolator="@anim/anim_interpolator_fragment" >
+
+    <translate
+        android:duration="@integer/anim_speed"
+        android:fromXDelta="100.0%p"
+        android:toXDelta="0.0%p" />
+
+    <!--<scale android:duration="@integer/anim_speed"-->
+           <!--android:fromYScale="0%p"-->
+           <!--android:fromXScale="0%p"-->
+           <!--android:toXScale="100.0%p"-->
+           <!--android:toYScale="100.0%p"/>-->
+
+</set>

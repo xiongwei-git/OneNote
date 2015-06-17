@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<appwidget-provider android:minWidth="72.0dip"
+                    android:minHeight="72.0dip"
+                    android:updatePeriodMillis="18000000"
+                    android:initialLayout="@layout/widgetlayout_onexone"
+                    android:previewImage="@drawable/widgetpreviewonexone"
+                    android:resizeMode="horizontal|vertical"
+                    android:initialKeyguardLayout="@layout/widgetlayout_onexone"
+                    android:widgetCategory="3"
+  xmlns:android="http://schemas.android.com/apk/res/android" />
