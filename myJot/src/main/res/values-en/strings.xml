@@ -47,4 +47,6 @@
     <string name="app_set_color_opacity">Opacity</string>
     <string name="app_set_color_set_default">Reset</string>
     <string name="app_set_color_set_color">Get it</string>
+
+    <string name="app_set_menu_title">Mobile Menu Setting</string>
 </resources>

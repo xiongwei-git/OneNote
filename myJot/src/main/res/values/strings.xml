@@ -47,4 +47,6 @@
     <string name="app_set_color_opacity">颜色透明度</string>
     <string name="app_set_color_set_default">恢复默认</string>
     <string name="app_set_color_set_color">选好了</string>
+
+    <string name="app_set_menu_title">菜单选项设置</string>
 </resources>

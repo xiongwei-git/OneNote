@@ -1,14 +1,15 @@
 package com.ted.jots.myjot.main;
 
-import android.content.*;
+import android.content.ActivityNotFoundException;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.res.Resources;
-import android.graphics.Color;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.View;
@@ -20,12 +21,9 @@ import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.gc.materialdesign.views.ButtonFloat;
+import com.gc.materialdesign.views.CheckBox;
+import com.gc.materialdesign.views.Switch;
 import com.gc.materialdesign.widgets.SnackBar;
-import com.larswerkman.holocolorpicker.ColorPicker;
-import com.larswerkman.holocolorpicker.OpacityBar;
-import com.larswerkman.holocolorpicker.SVBar;
-import com.larswerkman.holocolorpicker.SaturationBar;
-import com.larswerkman.holocolorpicker.ValueBar;
 import com.ted.jots.myjot.R;
 import com.ted.jots.myjot.config.ConfigManager;
 import com.ted.jots.myjot.data.DataManager;
@@ -33,21 +31,26 @@ import com.ted.jots.myjot.data.DataModel;
 import com.ted.jots.myjot.service.WatchingService;
 import com.ted.jots.myjot.utils.CheckDoubleClick;
 import com.ted.jots.myjot.utils.SystemUtil;
+import com.ted.jots.myjot.view.colorpickerview.view.ColorPanelView;
+import com.ted.jots.myjot.view.colorpickerview.view.ColorPickerView;
 
 
 public class MainActivity extends FragmentActivity {
-    //private final int MSG_CHANGE_COLOR = 0x123;
-
     private DataManager mDataManager;
     private ConfigManager mConfigManager;
     private EditText mInputEditText;
     private ButtonFloat mJotButton;
+    private ButtonFloat mMenuButton;
     private DataModel mOldData;
     private RelativeLayout mRootLayout;
     private RelativeLayout mMainLayout;
     private PopupWindow mMainMenu;
     private View mMainMenuView;
-    private ColorPicker mColorPicker;
+    private ColorPickerView mColorPickerView;
+    private ColorPanelView mOldColorPanelView;
+    private ColorPanelView mNewColorPanelView;
+    private CheckBox  mMenuConfigCheckBox;
+    private Switch mMenuConfigSwitchView;
 
     /**
      * 针对监听服务的广播接收器
@@ -62,6 +65,8 @@ public class MainActivity extends FragmentActivity {
         initViews();
         readData();
         initService();
+        updateAppMenu();
+        showMenuConfigDialog();
     }
 
     @Override
@@ -106,6 +111,9 @@ public class MainActivity extends FragmentActivity {
                 case R.id.root_layout:
                     SystemUtil.HideSoftInput(MainActivity.this);
                     finish();
+                    break;
+                case R.id.menu_btn_float:
+                    showMenuWindow();
                     break;
                 case R.id.main_menu_item_1:
                     onShareData();
@@ -163,12 +171,27 @@ public class MainActivity extends FragmentActivity {
         }
     };
 
+    private MaterialDialog.ButtonCallback mConfigMenuCallback = new MaterialDialog.ButtonCallback() {
+        @Override
+        public void onPositive(MaterialDialog dialog) {
+            super.onPositive(dialog);
+            if(null != mMenuConfigCheckBox && mMenuConfigCheckBox.isCheck())mConfigManager.setHasConfigMenu();
+            if(null != mMenuConfigSwitchView)mConfigManager.setUseAppMenu(mMenuConfigSwitchView.isCheck());
+            updateAppMenu();
+        }
+
+        @Override
+        public void onNegative(MaterialDialog dialog) {
+            super.onNegative(dialog);
+        }
+    };
+
 
     private MaterialDialog.ButtonCallback mSelectColorCallback = new MaterialDialog.ButtonCallback() {
         @Override
         public void onPositive(MaterialDialog dialog) {
             super.onPositive(dialog);
-            int argbColor = mColorPicker.getColor();
+            int argbColor = mColorPickerView.getColor();
             mConfigManager.setConfigAppBgColor(argbColor);
             setMainLayoutBg();
             updateMyWidget();
@@ -206,7 +229,9 @@ public class MainActivity extends FragmentActivity {
         mMainLayout = (RelativeLayout) findViewById(R.id.main_bg_layout);
         mInputEditText = (EditText) findViewById(R.id.jot_input_edit_txt);
         mJotButton = (ButtonFloat) findViewById(R.id.jot_jot_btn_float);
+        mMenuButton = (ButtonFloat) findViewById(R.id.menu_btn_float);
         mJotButton.setOnClickListener(onClickListener);
+        mMenuButton.setOnClickListener(onClickListener);
         mRootLayout.setOnClickListener(onClickListener);
         mMainMenuView.findViewById(R.id.main_menu_item_1).setOnClickListener(onClickListener);
         mMainMenuView.findViewById(R.id.main_menu_item_2).setOnClickListener(onClickListener);
@@ -287,7 +312,20 @@ public class MainActivity extends FragmentActivity {
         MaterialDialog dialog = builder.build();
         initColorPickerView(dialog.getView());
         dialog.show();
+    }
 
+    private void showMenuConfigDialog() {
+        if (mConfigManager.isHasConfigMenu()) return;
+        MaterialDialog.Builder builder = new MaterialDialog.Builder(this);
+        builder.title(R.string.app_set_menu_title)
+                .customView(R.layout.user_guide_layout_layout, true)
+                .callback(mConfigMenuCallback)
+                .positiveText(R.string.ok);
+        MaterialDialog dialog = builder.build();
+        mMenuConfigCheckBox = (CheckBox) dialog.getView().findViewById(R.id.menu_set_check_box);
+        mMenuConfigSwitchView = (Switch) dialog.getView().findViewById(R.id.menu_set_switch_view);
+        mMenuConfigSwitchView.setChecked(mConfigManager.isUseAppMenu());
+        dialog.show();
     }
 
     private void showCoursesDialog() {
@@ -320,6 +358,12 @@ public class MainActivity extends FragmentActivity {
         mMainMenuView.findViewById(R.id.main_menu_item_1).setVisibility(hasData ? View.VISIBLE : View.GONE);
         mMainMenuView.findViewById(R.id.main_menu_item_2).setVisibility(hasData ? View.VISIBLE : View.GONE);
         mMainMenu.showAtLocation(mMainLayout, Gravity.BOTTOM | Gravity.LEFT, 0, 0);
+    }
+
+
+    private void updateAppMenu(){
+        boolean useAppMenu = mConfigManager.isUseAppMenu();
+        mMenuButton.setVisibility(useAppMenu?View.VISIBLE:View.GONE);
     }
 
 
@@ -356,16 +400,21 @@ public class MainActivity extends FragmentActivity {
     }
 
     private void initColorPickerView(View colorPickerView) {
+        int initialColor = mConfigManager.getConfigAppBgColor();
         if (null != colorPickerView) {
-            mColorPicker = (ColorPicker) colorPickerView.findViewById(R.id.picker);
-            SVBar svBar = (SVBar) colorPickerView.findViewById(R.id.svbar);
-            OpacityBar opacityBar = (OpacityBar) colorPickerView.findViewById(R.id.opacitybar);
-            mColorPicker.addSVBar(svBar);
-            mColorPicker.addOpacityBar(opacityBar);
-            mColorPicker.setOldCenterColor(mConfigManager.getConfigAppBgColor());
-            mColorPicker.setColor(mConfigManager.getConfigAppBgColor());
-//            svBar.setColor(mConfigManager.getConfigAppBgColor());
-//            opacityBar.setColor(mConfigManager.getConfigAppBgColor());
+            mColorPickerView = (ColorPickerView) colorPickerView.findViewById(R.id.color_picker_view);
+            mOldColorPanelView = (ColorPanelView) colorPickerView.findViewById(R.id.color_panel_old);
+            mNewColorPanelView = (ColorPanelView) colorPickerView.findViewById(R.id.color_panel_new);
+            mColorPickerView.setOnColorChangedListener(onColorChangedListener);
+            mColorPickerView.setColor(initialColor, true);
+            mOldColorPanelView.setColor(initialColor);
         }
     }
+
+    private ColorPickerView.OnColorChangedListener onColorChangedListener = new ColorPickerView.OnColorChangedListener() {
+        @Override
+        public void onColorChanged(int newColor) {
+            mNewColorPanelView.setColor(mColorPickerView.getColor());
+        }
+    };
 }

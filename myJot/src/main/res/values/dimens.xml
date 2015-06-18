@@ -7,4 +7,9 @@
 
     <dimen name="main_menu_item_padding">0dp</dimen>
     <dimen name="main_menu_height">230dp</dimen>
+    <dimen name="color_picker_view_required_padding">6dp</dimen>
+
+    <dimen name="color_picker_dialog_preview_width">65dp</dimen>
+    <dimen name="color_picker_dialog_preview_height">32dp</dimen>
+
 </resources>
