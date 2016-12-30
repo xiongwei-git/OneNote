@@ -66,5 +66,5 @@
     <string name="close">关闭</string>
     <string name="praise_developer">点赞</string>
     <string name="developer_description">熊伟(Ted)\nAndroid程序开发者\nhttp://mrxiong.com/</string>
-
+    <string name="first_start_tips">长按圆形图标即可唤出菜单页面</string>
 </resources>

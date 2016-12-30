@@ -129,9 +129,7 @@ public class MainActivity extends AppCompatActivity {
     private View.OnLongClickListener mMenuLongClickListener = new View.OnLongClickListener() {
         @Override
         public boolean onLongClick(View view) {
-            if (mMenuBtn.isOpened()) return true;
-            mMenuBtn.toggle(true);
-            return true;
+           return onLongClickMenuBtn();
         }
     };
 
@@ -207,9 +205,20 @@ public class MainActivity extends AppCompatActivity {
                 showNoDataSnackBar();
                 return;
             }
+            if (!ConfigManager.hasUseMenu(MainActivity.this)) {
+                showMenuSnackBar();
+                return;
+            }
             SystemUtil.HideSoftInput(MainActivity.this);
             finish();
         }
+    }
+
+    private boolean onLongClickMenuBtn(){
+        ConfigManager.useMenu(MainActivity.this);
+        if (mMenuBtn.isOpened()) return true;
+        mMenuBtn.toggle(true);
+        return true;
     }
 
     private void initService() {
@@ -248,6 +257,7 @@ public class MainActivity extends AppCompatActivity {
             mInputEditText.setSelection(content.length());
             getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         } else {
+
             getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_UNSPECIFIED);
             mInputEditText.setText("");
             mInputEditText.setFocusable(true);
@@ -266,6 +276,16 @@ public class MainActivity extends AppCompatActivity {
 
     private void showNoDataSnackBar() {
         Snackbar.make(mMainLayout, R.string.no_data_tips, Snackbar.LENGTH_SHORT).show();
+    }
+
+    private void showMenuSnackBar() {
+        Snackbar.make(mMainLayout, R.string.first_start_tips, Snackbar.LENGTH_LONG).setAction(R.string.i_see, new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ConfigManager.useMenu(MainActivity.this);
+                onLongClickMenuBtn();
+            }
+        }).show();
     }
 
 

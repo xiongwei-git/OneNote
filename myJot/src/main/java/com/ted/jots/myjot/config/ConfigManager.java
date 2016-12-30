@@ -15,7 +15,7 @@ public class ConfigManager {
     public static final int DEFAULT_ARGB_COLOR = 0xcc1a1a1a;
     public static final int DEFAULT_TEXT_COLOR = 0xffffffff;
     public static final int DEFAULT_HINT_COLOR = 0xff3ba3f8;
-    private static final String KEY_FOR_SP_FIRST_START = "com_ted_my_jots_first_start";
+    private static final String KEY_FOR_SP_USE_MENU = "com_ted_my_jots_use_menu";
 
 
     public static SharedPreferences getSharedPreferences(Context context) {
@@ -23,14 +23,14 @@ public class ConfigManager {
         //return context.getSharedPreferences(ConfigManager.NAME_FOR_SHARE_PRE, Context.MODE_PRIVATE);
     }
 
-    public static boolean isFirstStart(Context context) {
-        boolean result = getSharedPreferences(context).getBoolean(KEY_FOR_SP_FIRST_START, false);
-        if (result) {
-            SharedPreferences.Editor editor = getSharedPreferences(context).edit();
-            editor.putBoolean(KEY_FOR_SP_FIRST_START, false);
-            editor.apply();
-        }
-        return result;
+    public static boolean hasUseMenu(Context context) {
+        return getSharedPreferences(context).getBoolean(KEY_FOR_SP_USE_MENU, false);
+    }
+
+    public static void useMenu(Context context){
+        SharedPreferences.Editor editor = getSharedPreferences(context).edit();
+        editor.putBoolean(KEY_FOR_SP_USE_MENU, true);
+        editor.apply();
     }
 
 
