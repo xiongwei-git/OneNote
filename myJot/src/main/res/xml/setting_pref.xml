@@ -1,28 +1,28 @@
 <android.support.v7.preference.PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <android.support.v7.preference.PreferenceCategory android:title="颜色设置">
+    <android.support.v7.preference.PreferenceCategory android:title="@string/config_color">
 
         <com.ted.jots.myjot.setting.ColorPickerPreference
             style="@style/AppPreference.DialogPreference.WithButton"
             android:key="@string/edit_page_color_key"
-            android:summary="设置编辑页面和桌面小部件的背景颜色"
-            android:title="背景颜色" />
+            android:summary="@string/background_color_des"
+            android:title="@string/background_color"/>
 
         <com.ted.jots.myjot.setting.ColorPickerPreference
             style="@style/AppPreference.DialogPreference.WithButton"
             android:key="@string/font_color_key"
-            android:summary="设置编辑页面和桌面小部件的字体颜色"
-            android:title="字体颜色" />
+            android:summary="@string/font_color_des"
+            android:title="@string/font_color"/>
 
     </android.support.v7.preference.PreferenceCategory>
 
-    <android.support.v7.preference.PreferenceCategory android:title="快捷输入设置">
+    <android.support.v7.preference.PreferenceCategory android:title="@string/fast_input_setting">
 
         <android.support.v7.preference.CheckBoxPreference
             android:defaultValue="true"
             android:key="@string/is_support_clipboard_key"
-            android:summary="复制内容之后，只要摇一摇即可快捷记录内容"
-            android:title="是否监听剪切板" />
+            android:summary="@string/fast_input_des"
+            android:title="@string/fast_input_title"/>
 
         <android.support.v7.preference.ListPreference
             android:defaultValue="1"
@@ -32,34 +32,43 @@
             android:negativeButtonText=""
             android:positiveButtonText=""
             android:summary=""
-            android:title="监听剪切板时间" />
+            android:title="@string/listen_clipboard_time"/>
     </android.support.v7.preference.PreferenceCategory>
 
-    <android.support.v7.preference.PreferenceCategory android:title="其他设置">
+    <android.support.v7.preference.PreferenceCategory android:title="@string/other_setting">
 
         <com.ted.jots.myjot.setting.CommonDialogPreference
             style="@style/AppPreference.DialogPreference"
-            android:dialogMessage="您确定要恢复最初设置么？"
-            android:dialogTitle="重置"
+            android:dialogMessage="@string/reset_all_tips"
+            android:dialogTitle="@string/reset"
             android:key="@string/reset_all_setting_key"
-            android:negativeButtonText="取消"
-            android:positiveButtonText="确认"
-            android:summary="将所有设置恢复默认值"
-            android:title="重置所有设置" />
+            android:negativeButtonText="@string/cancel"
+            android:positiveButtonText="@string/ok"
+            android:summary="@string/reset_all_des"
+            android:title="@string/reset_all_title"/>
+
+        <com.ted.jots.myjot.setting.CommonDialogPreference
+            style="@style/AppPreference.DialogPreference"
+            android:dialogMessage="@string/courses_description"
+            android:dialogTitle="@string/app_courses"
+            android:key="@string/app_use_courses_key"
+            android:positiveButtonText="@string/i_see"
+            android:summary="@string/courses_des"
+            android:title="@string/courses_title"/>
 
         <Preference
             android:key="@string/share_app_to_friend_key"
-            android:summary="好东西当然一起分享"
-            android:title="分享应用给好友" />
+            android:summary="@string/share_app_des"
+            android:title="@string/share_app_title"/>
 
         <com.ted.jots.myjot.setting.CommonDialogPreference
             style="@style/AppPreference.DialogPreference"
             android:dialogMessage="@string/developer_description"
-            android:dialogTitle="关于作者"
+            android:dialogTitle="@string/about_developer"
             android:key="@string/about_developer_key"
-            android:negativeButtonText="关闭"
-            android:positiveButtonText="点赞"
-            android:title="关于作者" />
+            android:negativeButtonText="@string/close"
+            android:positiveButtonText="@string/praise_developer"
+            android:title="@string/about_developer"/>
 
     </android.support.v7.preference.PreferenceCategory>
 </android.support.v7.preference.PreferenceScreen>

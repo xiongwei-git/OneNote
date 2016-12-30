@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<appwidget-provider android:minWidth="288.0dip" android:minHeight="144.0dip"
-                    android:updatePeriodMillis="18000000" android:initialLayout="@layout/widgetlayout_fourxtwo" android:previewImage="@drawable/widgetpreviewfourxtwo" android:resizeMode="horizontal|vertical" android:initialKeyguardLayout="@layout/widgetlayout_fourxtwo" android:widgetCategory="3"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:initialLayout="@layout/widgetlayout_fourxtwo"
+                    android:minHeight="144.0dip"
+                    android:minWidth="288.0dip"
+                    android:previewImage="@drawable/widgetpreviewfourxtwo"
+                    android:resizeMode="horizontal|vertical"
+                    android:updatePeriodMillis="18000000"/>

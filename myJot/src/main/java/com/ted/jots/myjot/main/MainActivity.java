@@ -265,7 +265,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void showNoDataSnackBar() {
-        Snackbar.make(mMainLayout, "别闹，先输入点文字再说吧！", Snackbar.LENGTH_SHORT).show();
+        Snackbar.make(mMainLayout, R.string.no_data_tips, Snackbar.LENGTH_SHORT).show();
     }
 
 

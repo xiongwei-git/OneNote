@@ -8,6 +8,7 @@ import android.net.Uri;
 import android.text.TextUtils;
 import android.widget.Toast;
 
+import com.ted.jots.myjot.R;
 import com.ted.jots.myjot.widget.WidgetForFourXFour;
 import com.ted.jots.myjot.widget.WidgetForFourXOne;
 import com.ted.jots.myjot.widget.WidgetForFourXThree;
@@ -20,8 +21,18 @@ import com.ted.jots.myjot.widget.WidgetForOneXOne;
  */
 
 public class MainPresenter {
-    public static void onShare(Context context,String content){
+
+    public static void onShare(Context context, String content) {
         if (TextUtils.isEmpty(content)) return;
+        Intent intent = new Intent();
+        intent.setAction("android.intent.action.SEND");
+        intent.putExtra("android.intent.extra.TEXT", content);
+        intent.setType("text/plain");
+        context.startActivity(intent);
+    }
+
+    public static void onShareApp(Context context) {
+        String content = context.getString(R.string.share_app_description);
         Intent intent = new Intent();
         intent.setAction("android.intent.action.SEND");
         intent.putExtra("android.intent.extra.TEXT", content);
@@ -35,11 +46,11 @@ public class MainPresenter {
         try {
             activity.startActivity(intent);
         } catch (ActivityNotFoundException e) {
-            Toast.makeText(activity, "你还未安装应用市场", Toast.LENGTH_SHORT).show();
+            Toast.makeText(activity, R.string.no_market_tips, Toast.LENGTH_SHORT).show();
         }
     }
 
-    public static void updateMyWidget(Context context,String content) {
+    public static void updateMyWidget(Context context, String content) {
         String updateAction = "android.appwidget.action.APPWIDGET_SET_DATA";
         Intent intent1 = new Intent(context, WidgetForOneXOne.class);
         intent1.setAction(updateAction);

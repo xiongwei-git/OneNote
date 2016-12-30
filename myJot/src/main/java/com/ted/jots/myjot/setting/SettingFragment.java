@@ -60,7 +60,7 @@ public class SettingFragment extends PreferenceFragmentCompat implements SharedP
     @Override
     public boolean onPreferenceTreeClick(Preference preference) {
         if (preference.getKey().equalsIgnoreCase(getString(R.string.share_app_to_friend_key))) {
-            Toast.makeText(getActivity(), "分享给好友", Toast.LENGTH_SHORT).show();
+            MainPresenter.onShareApp(getActivity());
         }
         return super.onPreferenceTreeClick(preference);
     }
@@ -71,7 +71,9 @@ public class SettingFragment extends PreferenceFragmentCompat implements SharedP
         if (preference instanceof ColorPickerPreference) {
             dialogFragment = ColorPickerPreDlgFragCompat.newInstance(preference.getKey());
         } else if (preference instanceof CommonDialogPreference) {
-            dialogFragment = CommonDialogFragment.newIns(preference);
+            if (getString(R.string.app_use_courses_key).equals(preference.getKey()))
+                dialogFragment = SingleDialogFragment.newIns(preference);
+            else dialogFragment = CommonDialogFragment.newIns(preference);
         }
         if (null != dialogFragment) {
             dialogFragment.setTargetFragment(this, 0);
@@ -102,16 +104,16 @@ public class SettingFragment extends PreferenceFragmentCompat implements SharedP
     public void onDialogCall(String dialogPreKey, boolean isOkBtn) {
         if (dialogPreKey.equals(getString(R.string.reset_all_setting_key)) && isOkBtn) {
             refreshSetting();
-            mUiHandler.sendEmptyMessageDelayed(0,500);
+            mUiHandler.sendEmptyMessageDelayed(0, 500);
         } else if (dialogPreKey.equals(getString(R.string.about_developer_key)) && isOkBtn) {
             MainPresenter.onTanksDeveloper(getActivity());
         }
     }
 
-    private void refreshSetting(){
-        ((ColorPickerPreference)findPreference(getString(R.string.edit_page_color_key))).setColor(ConfigManager.DEFAULT_ARGB_COLOR);
-        ((ColorPickerPreference)findPreference(getString(R.string.font_color_key))).setColor(ConfigManager.DEFAULT_TEXT_COLOR);
-        ((ListPreference)findPreference(getString(R.string.listen_clipboard_time_key))).setValueIndex(1);
-        ((CheckBoxPreference)findPreference(getString(R.string.is_support_clipboard_key))).setChecked(true);
+    private void refreshSetting() {
+        ((ColorPickerPreference) findPreference(getString(R.string.edit_page_color_key))).setColor(ConfigManager.DEFAULT_ARGB_COLOR);
+        ((ColorPickerPreference) findPreference(getString(R.string.font_color_key))).setColor(ConfigManager.DEFAULT_TEXT_COLOR);
+        ((ListPreference) findPreference(getString(R.string.listen_clipboard_time_key))).setValueIndex(1);
+        ((CheckBoxPreference) findPreference(getString(R.string.is_support_clipboard_key))).setChecked(true);
     }
 }

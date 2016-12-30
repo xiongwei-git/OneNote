@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.ted.jots.myjot">
+          package="com.ted.jots.myjot">
 
     <uses-permission android:name="android.permission.VIBRATE"/>
 
@@ -10,67 +10,82 @@
         android:label="@string/app_name">
         <receiver android:name=".widget.WidgetForOneXOne">
             <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-                <action android:name="ACTION.WIDGET.UPDATE.FROM.ACTIVITY" />
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+                <action android:name="ACTION.WIDGET.UPDATE.FROM.ACTIVITY"/>
             </intent-filter>
-            <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget_onexone" />
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_onexone"/>
         </receiver>
         <receiver android:name=".widget.WidgetForFourXOne">
             <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-                <action android:name="ACTION.WIDGET.UPDATE.FROM.ACTIVITY" />
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+                <action android:name="ACTION.WIDGET.UPDATE.FROM.ACTIVITY"/>
             </intent-filter>
-            <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget_fourxone" />
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_fourxone"/>
         </receiver>
         <receiver android:name=".widget.WidgetForFourXTwo">
             <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-                <action android:name="ACTION.WIDGET.UPDATE.FROM.ACTIVITY" />
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+                <action android:name="ACTION.WIDGET.UPDATE.FROM.ACTIVITY"/>
             </intent-filter>
-            <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget_fourxtwo" />
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_fourxtwo"/>
         </receiver>
         <receiver android:name=".widget.WidgetForFourXThree">
             <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-                <action android:name="ACTION.WIDGET.UPDATE.FROM.ACTIVITY" />
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+                <action android:name="ACTION.WIDGET.UPDATE.FROM.ACTIVITY"/>
             </intent-filter>
-            <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget_fourxthree" />
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_fourxthree"/>
         </receiver>
         <receiver android:name=".widget.WidgetForFourXFour">
             <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-                <action android:name="ACTION.WIDGET.UPDATE.FROM.ACTIVITY" />
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+                <action android:name="ACTION.WIDGET.UPDATE.FROM.ACTIVITY"/>
             </intent-filter>
-            <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget_fourxfour" />
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_fourxfour"/>
         </receiver>
 
-        <activity android:label="@string/share_to_note" android:name=".main.ReceiveDataActivity"
-                  android:screenOrientation="portrait">
+        <activity
+            android:name=".main.ReceiveDataActivity"
+            android:label="@string/share_to_note"
+            android:screenOrientation="portrait">
             <intent-filter>
-                <action android:name="android.intent.action.SEND" />
-                <category android:name="android.intent.category.DEFAULT" />
-                <data android:mimeType="text/*" />
+                <action android:name="android.intent.action.SEND"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:mimeType="text/*"/>
             </intent-filter>
 
         </activity>
 
         <activity
-            android:windowSoftInputMode="stateVisible|adjustResize"
             android:name=".main.MainActivity"
+            android:label="@string/app_name"
             android:theme="@style/AppTheme.MainTheme"
-            android:label="@string/app_name" >
+            android:windowSoftInputMode="stateVisible|adjustResize">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
 
-        <activity android:name=".setting.SettingActivity"
-            android:theme="@style/AppTheme"
-            android:label="@string/app_name"/>
+        <activity
+            android:name=".setting.SettingActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme"/>
 
-        <service android:name=".service.WatchingService" android:exported="false" />
+        <service
+            android:name=".service.WatchingService"
+            android:exported="false"/>
     </application>
 
 </manifest>

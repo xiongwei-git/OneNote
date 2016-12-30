@@ -8,6 +8,7 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.preference.Preference;
+import android.text.TextUtils;
 
 /**
  * Created by ted on 2016/12/27.
@@ -54,8 +55,14 @@ public class CommonDialogFragment extends DialogFragment {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setTitle(getArguments().getString("title", ""));
         builder.setMessage(getArguments().getString("msg", ""));
-        builder.setNegativeButton(getArguments().getString("negative", "取消"), mNegativeOnClickListener);
-        builder.setPositiveButton(getArguments().getString("positive", "确定"), mPositiveOnClickListener);
+        String negative = getArguments().getString("negative", "");
+        if(!TextUtils.isEmpty(negative)){
+            builder.setNegativeButton(negative, mNegativeOnClickListener);
+        }
+        String positive = getArguments().getString("positive", "");
+        if(!TextUtils.isEmpty(positive)){
+            builder.setPositiveButton(positive, mPositiveOnClickListener);
+        }
         return builder.create();
     }
 

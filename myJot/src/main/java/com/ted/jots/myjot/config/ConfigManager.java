@@ -2,12 +2,10 @@ package com.ted.jots.myjot.config;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.support.v7.preference.PreferenceManager;
-import android.util.Log;
+import android.text.TextUtils;
 
 import com.ted.jots.myjot.R;
-import com.ted.jots.myjot.data.Constants;
 
 /**
  * Created by Ted on 2015/2/15.
@@ -58,6 +56,33 @@ public class ConfigManager {
 
     public static int getConfigWidgetBgColor(Context context) {
         return getConfigAppBgColor(context);
+    }
+
+    public static boolean getSupportListenClipboard(Context context) {
+        return getSharedPreferences(context).getBoolean(context.getString(R.string.is_support_clipboard_key), true);
+    }
+
+    public static long getConfigListenClipboardTime(Context context) {
+        String value = getSharedPreferences(context).getString(context.getString(R.string.listen_clipboard_time_key), "1");
+        if (TextUtils.isEmpty(value)) value = "1";
+        int second = 15;
+        switch (value) {
+            case "0":
+                second = 5;
+                break;
+            case "1":
+                second = 15;
+                break;
+            case "2":
+                second = 30;
+                break;
+            case "3":
+                second = 120;
+                break;
+            default:
+                break;
+        }
+        return 1000L * second;
     }
 
 }

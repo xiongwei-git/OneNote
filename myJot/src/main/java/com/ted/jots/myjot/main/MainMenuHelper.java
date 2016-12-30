@@ -51,12 +51,11 @@ public class MainMenuHelper implements View.OnClickListener {
     private FloatingActionButton getSettingButton(Context context) {
         final FloatingActionButton settingBtn = new FloatingActionButton(context);
         settingBtn.setButtonSize(FloatingActionButton.SIZE_MINI);
-        settingBtn.setLabelText(context.getString(R.string.app_name));
         settingBtn.setColorNormalResId(R.color.app_logo_color_light);
         settingBtn.setColorPressedResId(R.color.app_logo_color);
         settingBtn.setImageResource(R.drawable.set);
         settingBtn.setTag(MENU_TYPE_SETTING);
-        settingBtn.setLabelText("设置应用");
+        settingBtn.setLabelText(R.string.config_app);
         settingBtn.setOnClickListener(this);
         return settingBtn;
     }
@@ -64,10 +63,9 @@ public class MainMenuHelper implements View.OnClickListener {
     private FloatingActionButton getShareButton(Context context) {
         final FloatingActionButton shareBtn = new FloatingActionButton(context);
         shareBtn.setButtonSize(FloatingActionButton.SIZE_MINI);
-        shareBtn.setLabelText(context.getString(R.string.app_name));
         shareBtn.setImageResource(R.drawable.share);
         shareBtn.setTag(MENU_TYPE_SHARE);
-        shareBtn.setLabelText("分享内容");
+        shareBtn.setLabelText(R.string.share_to);
         shareBtn.setColorNormalResId(R.color.app_logo_color_light);
         shareBtn.setColorPressedResId(R.color.app_logo_color);
         shareBtn.setOnClickListener(this);
@@ -77,10 +75,9 @@ public class MainMenuHelper implements View.OnClickListener {
     private FloatingActionButton getClearButton(Context context) {
         final FloatingActionButton clearBtn = new FloatingActionButton(context);
         clearBtn.setButtonSize(FloatingActionButton.SIZE_MINI);
-        clearBtn.setLabelText(context.getString(R.string.app_name));
         clearBtn.setImageResource(R.drawable.delete);
         clearBtn.setTag(MENU_TYPE_CLEAR);
-        clearBtn.setLabelText("清空内容");
+        clearBtn.setLabelText(R.string.delete_all_data);
         clearBtn.setColorNormalResId(R.color.app_logo_color_light);
         clearBtn.setColorPressedResId(R.color.app_logo_color);
         clearBtn.setOnClickListener(this);

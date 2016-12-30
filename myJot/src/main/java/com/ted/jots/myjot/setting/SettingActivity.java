@@ -27,7 +27,7 @@ public class SettingActivity extends AppCompatActivity {
             }
         });
         if(null != getSupportActionBar())
-            getSupportActionBar().setTitle("设置");
+            getSupportActionBar().setTitle(R.string.setting);
         if (null == savedInstanceState)
             getSupportFragmentManager().beginTransaction().add(
                     R.id.setting_fragment_container, new SettingFragment()).commit();

@@ -13,10 +13,6 @@
         app:navigationIcon="@drawable/ic_arrow_back_white_24dp"
         app:theme="@style/AppTheme.Toolbar" />
 
-    <!--<ListView-->
-        <!--android:id="@android:id/list"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content" />-->
     <FrameLayout
         android:id="@+id/setting_fragment_container"
         android:layout_width="match_parent"

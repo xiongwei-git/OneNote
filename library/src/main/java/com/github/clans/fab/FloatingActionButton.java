@@ -1074,6 +1074,10 @@ public class FloatingActionButton extends ImageButton {
         }
     }
 
+    public void setLabelText(int resId){
+        setLabelText(getContext().getString(resId));
+    }
+
     public void setLabelText(String text) {
         mLabelText = text;
         TextView labelView = getLabelView();
