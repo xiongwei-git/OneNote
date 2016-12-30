@@ -4,6 +4,7 @@
     <string name="app_name">烂笔头</string>
 
     <string name="clear">清空</string>
+    <string name="close">关闭</string>
     <string name="remember">记录</string>
     <string name="share">分享</string>
 
@@ -21,14 +22,9 @@
     <string name="have_add_clip">剪切板内容已经加入烂笔头</string>
     <string name="have_add_share">分享内容已经加入烂笔头</string>
 
-    <string name="config_title">配置：</string>
-    <string name="config_color">颜色</string>
-    <string name="config_developer">开发者</string>
-    <string name="config_course">教程</string>
 
     <string name="about_developer">关于开发者</string>
     <string name="developer_description">熊伟(Ted)\nAndroid程序开发者\nhttp://mrxiong.com/</string>
-    <string name="close">关闭</string>
     <string name="praise_developer">点赞</string>
 
     <string name="courses_title">使用技巧</string>
@@ -36,17 +32,27 @@
     <string name="courses_2">2、在其他应用分享文本内容时，选择添加到烂笔头即可保存\n</string>
     <string name="courses_3">3、更多便捷功能，敬请期待</string>
 
-    <string name="main_menu_item_1">拷贝内容</string>
-    <string name="main_menu_item_2">清空内容</string>
-    <string name="main_menu_item_3">使用技巧</string>
-    <string name="main_menu_item_4">关于开发者</string>
+    <string name="listen_clipboard_des">复制内容之后在%s以内摇一摇，即可快速记录内容</string>
 
-    <string name="main_menu_item_set_app">应用设置</string>
-    <string name="app_set_color_title">颜色配置</string>
-    <string name="app_set_color_saturation">颜色饱和度</string>
-    <string name="app_set_color_opacity">颜色透明度</string>
-    <string name="app_set_color_set_default">恢复默认</string>
-    <string name="app_set_color_set_color">选好了</string>
+    <string-array name="listen_clipboard_time_title">
+        <item>5秒</item>
+        <item>15秒</item>
+        <item>30秒</item>
+        <item>2分钟</item>
+    </string-array>
+    <string-array name="listen_clipboard_time_value">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
 
-    <string name="app_set_menu_title">菜单选项设置</string>
+    <string name="edit_page_color_key">edit_page_color_key</string>
+    <string name="font_color_key">font_color_key</string>
+    <string name="is_support_clipboard_key">is_support_clipboard_key</string>
+    <string name="listen_clipboard_time_key">listen_clipboard_time_key</string>
+    <string name="reset_all_setting_key">reset_all_setting_key</string>
+    <string name="share_app_to_friend_key">share_app_to_friend_key</string>
+    <string name="about_developer_key">about_developer_key</string>
+
 </resources>

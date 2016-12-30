@@ -1,7 +1,2 @@
-.gradle
-/local.properties
-.DS_Store
 /build
-/.idea/*
-Jots.iml
-myJot/myJot.iml
+/.idea

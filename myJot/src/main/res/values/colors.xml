@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="transparent">#00000000</color>
+    <color name="app_logo_color_light">#3ba3f8</color>
+    <color name="app_logo_color">#0862c3</color>
 
     <color name="dialog_button_normal">#ff4d4d4d</color>
     <color name="dialog_button_press">#ff2196f3</color>

@@ -1,32 +1,32 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:materialdesign="http://schemas.android.com/apk/res-auto"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/root_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/transparent"
-    tools:context=".MainActivity">
+    tools:context=".main.MainActivity">
 
-    <RelativeLayout
-        android:id="@+id/main_bg_layout"
+    <com.ted.jots.myjot.view.behavior.CustomFrameLayout
+        android:id="@+id/root_layout"
         android:layout_width="match_parent"
-        android:layout_height="230dp"
-        android:layout_alignParentBottom="true"
-        android:background="@color/widget_bg_color_default"
-        android:clickable="true">
+        android:layout_height="match_parent"
+        android:background="@android:color/transparent">
 
-
-        <ScrollView
+        <android.support.v4.widget.NestedScrollView
+            android:id="@+id/main_bg_layout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="46dp">
+            android:layout_height="300dp"
+            android:layout_gravity="bottom"
+            android:paddingTop="16dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:paddingBottom="80dp"
+            android:background="@color/widget_bg_color_default"
+            android:clickable="true">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
-                android:layout_alignParentBottom="true"
                 android:orientation="vertical">
-
 
                 <EditText
                     android:id="@+id/jot_input_edit_txt"
@@ -35,40 +35,30 @@
                     android:background="@null"
                     android:fontFamily="sans-serif-light"
                     android:gravity="top"
+                    android:textColorHint="@color/app_logo_color_light"
                     android:hint="@string/touch_to_input"
-                    android:minLines="1"
-                    android:padding="8dp"
                     android:textColor="@android:color/white"
                     android:textSize="17sp" />
 
             </LinearLayout>
 
-        </ScrollView>
+        </android.support.v4.widget.NestedScrollView>
+
+        <com.github.clans.fab.FloatingActionMenu
+            android:id="@+id/main_menu_btn"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="16dp"
+            fab:menu_backgroundColor="#ccffffff"
+            fab:menu_colorNormal="@color/app_logo_color_light"
+            fab:menu_colorPressed="@color/app_logo_color"
+            fab:menu_icon="@drawable/pin"
+            fab:menu_labels_ellipsize="end"
+            fab:menu_labels_singleLine="true">
+
+        </com.github.clans.fab.FloatingActionMenu>
+    </com.ted.jots.myjot.view.behavior.CustomFrameLayout>
 
 
-        <com.gc.materialdesign.views.ButtonFloat
-            android:id="@+id/jot_jot_btn_float"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="24dp"
-            android:background="#1E88E5"
-            materialdesign:animate="true"
-            materialdesign:iconDrawable="@drawable/ic_action_new" />
-
-        <com.gc.materialdesign.views.ButtonFloat
-            android:id="@+id/menu_btn_float"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_marginLeft="24dp"
-            android:background="#1E88E5"
-            android:visibility="gone"
-            materialdesign:animate="true"
-            materialdesign:iconDrawable="@drawable/ic_menu" />
-
-    </RelativeLayout>
-
-
-</RelativeLayout>
+</android.support.design.widget.CoordinatorLayout>

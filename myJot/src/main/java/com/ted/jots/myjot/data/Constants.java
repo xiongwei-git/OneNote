@@ -2,6 +2,7 @@ package com.ted.jots.myjot.data;
 
 /**
  * Created by Ted on 2015/2/15.
+ * Constants
  */
 public class Constants {
 
@@ -10,6 +11,6 @@ public class Constants {
     public static final int WAIT_ANIM_OVER = 0x2;
 
     /**OTHER*/
-    public static final long LISTEN_SHAKE_TIME = 1500l;
+    public static final long LISTEN_SHAKE_TIME = 1500L;
 
 }

@@ -1,0 +1,65 @@
+<android.support.v7.preference.PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <android.support.v7.preference.PreferenceCategory android:title="颜色设置">
+
+        <com.ted.jots.myjot.setting.ColorPickerPreference
+            style="@style/AppPreference.DialogPreference.WithButton"
+            android:key="@string/edit_page_color_key"
+            android:summary="设置编辑页面和桌面小部件的背景颜色"
+            android:title="背景颜色" />
+
+        <com.ted.jots.myjot.setting.ColorPickerPreference
+            style="@style/AppPreference.DialogPreference.WithButton"
+            android:key="@string/font_color_key"
+            android:summary="设置编辑页面和桌面小部件的字体颜色"
+            android:title="字体颜色" />
+
+    </android.support.v7.preference.PreferenceCategory>
+
+    <android.support.v7.preference.PreferenceCategory android:title="快捷输入设置">
+
+        <android.support.v7.preference.CheckBoxPreference
+            android:defaultValue="true"
+            android:key="@string/is_support_clipboard_key"
+            android:summary="复制内容之后，只要摇一摇即可快捷记录内容"
+            android:title="是否监听剪切板" />
+
+        <android.support.v7.preference.ListPreference
+            android:defaultValue="1"
+            android:entries="@array/listen_clipboard_time_title"
+            android:entryValues="@array/listen_clipboard_time_value"
+            android:key="@string/listen_clipboard_time_key"
+            android:negativeButtonText=""
+            android:positiveButtonText=""
+            android:summary=""
+            android:title="监听剪切板时间" />
+    </android.support.v7.preference.PreferenceCategory>
+
+    <android.support.v7.preference.PreferenceCategory android:title="其他设置">
+
+        <com.ted.jots.myjot.setting.CommonDialogPreference
+            style="@style/AppPreference.DialogPreference"
+            android:dialogMessage="您确定要恢复最初设置么？"
+            android:dialogTitle="重置"
+            android:key="@string/reset_all_setting_key"
+            android:negativeButtonText="取消"
+            android:positiveButtonText="确认"
+            android:summary="将所有设置恢复默认值"
+            android:title="重置所有设置" />
+
+        <Preference
+            android:key="@string/share_app_to_friend_key"
+            android:summary="好东西当然一起分享"
+            android:title="分享应用给好友" />
+
+        <com.ted.jots.myjot.setting.CommonDialogPreference
+            style="@style/AppPreference.DialogPreference"
+            android:dialogMessage="@string/developer_description"
+            android:dialogTitle="关于作者"
+            android:key="@string/about_developer_key"
+            android:negativeButtonText="关闭"
+            android:positiveButtonText="点赞"
+            android:title="关于作者" />
+
+    </android.support.v7.preference.PreferenceCategory>
+</android.support.v7.preference.PreferenceScreen>

@@ -32,7 +32,7 @@ MERGED from com.android.support:cardview-v7:21.0.3:16:5
 		ADDED from AndroidManifest.xml:9:9
 	android:theme
 		ADDED from AndroidManifest.xml:11:9
-receiver#com.ted.jots.myjot.main.WidgetForOneXOne
+receiver#com.ted.jots.myjot.widget.WidgetForOneXOne
 ADDED from AndroidManifest.xml:12:9
 	android:name
 		ADDED from AndroidManifest.xml:12:19
@@ -52,19 +52,19 @@ ADDED from AndroidManifest.xml:17:13
 		ADDED from AndroidManifest.xml:17:66
 	android:name
 		ADDED from AndroidManifest.xml:17:24
-receiver#com.ted.jots.myjot.main.WidgetForFourXOne
+receiver#com.ted.jots.myjot.widget.WidgetForFourXOne
 ADDED from AndroidManifest.xml:19:9
 	android:name
 		ADDED from AndroidManifest.xml:19:19
-receiver#com.ted.jots.myjot.main.WidgetForFourXTwo
+receiver#com.ted.jots.myjot.widget.WidgetForFourXTwo
 ADDED from AndroidManifest.xml:26:9
 	android:name
 		ADDED from AndroidManifest.xml:26:19
-receiver#com.ted.jots.myjot.main.WidgetForFourXThree
+receiver#com.ted.jots.myjot.widget.WidgetForFourXThree
 ADDED from AndroidManifest.xml:33:9
 	android:name
 		ADDED from AndroidManifest.xml:33:19
-receiver#com.ted.jots.myjot.main.WidgetForFourXFour
+receiver#com.ted.jots.myjot.widget.WidgetForFourXFour
 ADDED from AndroidManifest.xml:40:9
 	android:name
 		ADDED from AndroidManifest.xml:40:19

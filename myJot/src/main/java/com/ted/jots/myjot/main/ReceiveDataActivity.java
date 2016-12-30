@@ -16,6 +16,7 @@ import com.ted.jots.myjot.service.WatchingService;
 
 /**
  * Created by Ted on 2015/3/5.
+ * ReceiveDataActivity
  */
 public class ReceiveDataActivity extends Activity {
     @Override
@@ -35,7 +36,6 @@ public class ReceiveDataActivity extends Activity {
             if ((!clipDescription.hasMimeType("text/plain")) && (!clipDescription.hasMimeType("text/html"))){
                 /**剪切板里面的不是文本内容*/
                 finish();
-                return;
             }else {
                 DataModel newDataModel = new DataModel();
                 StringBuilder stringBuilder = new StringBuilder();
@@ -56,9 +56,7 @@ public class ReceiveDataActivity extends Activity {
                 String subject = intent.getStringExtra(android.content.Intent.EXTRA_SUBJECT);
                 String body = intent.getStringExtra(android.content.Intent.EXTRA_TEXT);
                 DataModel newDataModel = new DataModel();
-                StringBuilder stringBuilder = new StringBuilder();
-                stringBuilder.append(subject).append(body);
-                newDataModel.setContent(stringBuilder.toString());
+                newDataModel.setContent(subject + body);
                 onSaveShareMemo(newDataModel);
             }else finish();
         }
@@ -66,13 +64,12 @@ public class ReceiveDataActivity extends Activity {
 
     private void onSaveShareMemo(DataModel newDataModel){
         if(null == newDataModel || TextUtils.isEmpty(newDataModel.getContent()))return;
-        DataManager dataManager = new DataManager(getApplicationContext());
-        DataModel preDataModel = dataManager.readData();
+        DataModel preDataModel = DataManager.readData(this);
         StringBuilder saveBuilder = new StringBuilder();
         String preContent = preDataModel.getContent();
         saveBuilder.append(preContent).append(TextUtils.isEmpty(preContent)?"":"\n").append(newDataModel.getContent());
         newDataModel.setContent(saveBuilder.toString());
-        dataManager.writeData(newDataModel);
+        DataManager.writeData(this,newDataModel);
         Context context = getApplicationContext();
         Toast.makeText(context, context.getResources().getString(R.string.have_add_share), Toast.LENGTH_LONG).show();
         Intent intent = new Intent(WatchingService.RELOAD_DATA_ACTION);
@@ -82,26 +79,6 @@ public class ReceiveDataActivity extends Activity {
     }
 
     public void updateMyWidget(DataModel newDataModel) {
-        String updateAction = "android.appwidget.action.APPWIDGET_SET_DATA";
-        Intent intent1 = new Intent(this, WidgetForOneXOne.class);
-        intent1.setAction(updateAction);
-        intent1.putExtra("TEXT_STRING", newDataModel.getContent());
-        sendBroadcast(intent1);
-        Intent intent2 = new Intent(this, WidgetForFourXTwo.class);
-        intent2.putExtra("TEXT_STRING", newDataModel.getContent());
-        intent2.setAction(updateAction);
-        sendBroadcast(intent2);
-        Intent intent3 = new Intent(this, WidgetForFourXThree.class);
-        intent3.putExtra("TEXT_STRING", newDataModel.getContent());
-        intent3.setAction(updateAction);
-        sendBroadcast(intent3);
-        Intent intent4 = new Intent(this, WidgetForFourXFour.class);
-        intent4.putExtra("TEXT_STRING", newDataModel.getContent());
-        intent4.setAction(updateAction);
-        sendBroadcast(intent4);
-        Intent intent5 = new Intent(this, WidgetForFourXOne.class);
-        intent5.putExtra("TEXT_STRING", newDataModel.getContent());
-        intent5.setAction(updateAction);
-        sendBroadcast(intent5);
+        MainPresenter.updateMyWidget(this,newDataModel.getContent());
     }
 }

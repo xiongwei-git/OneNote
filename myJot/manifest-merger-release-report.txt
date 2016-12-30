@@ -37,7 +37,7 @@ MERGED from com.android.support:support-v4:22.2.0:22:5
 		ADDED from AndroidManifest.xml:11:9
 	android:theme
 		ADDED from AndroidManifest.xml:13:9
-receiver#com.ted.jots.myjot.main.WidgetForOneXOne
+receiver#com.ted.jots.myjot.widget.WidgetForOneXOne
 ADDED from AndroidManifest.xml:14:9
 	android:name
 		ADDED from AndroidManifest.xml:14:19
@@ -57,19 +57,19 @@ ADDED from AndroidManifest.xml:19:13
 		ADDED from AndroidManifest.xml:19:66
 	android:name
 		ADDED from AndroidManifest.xml:19:24
-receiver#com.ted.jots.myjot.main.WidgetForFourXOne
+receiver#com.ted.jots.myjot.widget.WidgetForFourXOne
 ADDED from AndroidManifest.xml:21:9
 	android:name
 		ADDED from AndroidManifest.xml:21:19
-receiver#com.ted.jots.myjot.main.WidgetForFourXTwo
+receiver#com.ted.jots.myjot.widget.WidgetForFourXTwo
 ADDED from AndroidManifest.xml:28:9
 	android:name
 		ADDED from AndroidManifest.xml:28:19
-receiver#com.ted.jots.myjot.main.WidgetForFourXThree
+receiver#com.ted.jots.myjot.widget.WidgetForFourXThree
 ADDED from AndroidManifest.xml:35:9
 	android:name
 		ADDED from AndroidManifest.xml:35:19
-receiver#com.ted.jots.myjot.main.WidgetForFourXFour
+receiver#com.ted.jots.myjot.widget.WidgetForFourXFour
 ADDED from AndroidManifest.xml:42:9
 	android:name
 		ADDED from AndroidManifest.xml:42:19
