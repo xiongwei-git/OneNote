@@ -46,6 +46,7 @@ android {
             storePassword "xiongwei"
             keyAlias "ted_android"
             keyPassword "xiongwei"
+            v2SigningEnabled false
         }
     }
 

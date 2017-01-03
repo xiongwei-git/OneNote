@@ -201,12 +201,12 @@ public class MainActivity extends AppCompatActivity {
     private void onClickMenuBtn() {
         if (mMenuBtn.isOpened()) mMenuBtn.toggle(true);
         else {
-            if (TextUtils.isEmpty(getInputContent())) {
-                showNoDataSnackBar();
-                return;
-            }
             if (!ConfigManager.hasUseMenu(MainActivity.this)) {
                 showMenuSnackBar();
+                return;
+            }
+            if (TextUtils.isEmpty(getInputContent())) {
+                showNoDataSnackBar();
                 return;
             }
             SystemUtil.HideSoftInput(MainActivity.this);

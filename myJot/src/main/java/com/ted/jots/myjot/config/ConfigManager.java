@@ -20,14 +20,13 @@ public class ConfigManager {
 
     public static SharedPreferences getSharedPreferences(Context context) {
         return PreferenceManager.getDefaultSharedPreferences(context);
-        //return context.getSharedPreferences(ConfigManager.NAME_FOR_SHARE_PRE, Context.MODE_PRIVATE);
     }
 
     public static boolean hasUseMenu(Context context) {
         return getSharedPreferences(context).getBoolean(KEY_FOR_SP_USE_MENU, false);
     }
 
-    public static void useMenu(Context context){
+    public static void useMenu(Context context) {
         SharedPreferences.Editor editor = getSharedPreferences(context).edit();
         editor.putBoolean(KEY_FOR_SP_USE_MENU, true);
         editor.apply();
@@ -47,12 +46,6 @@ public class ConfigManager {
         if (configColor == -1) configColor = defaultColor;
         return configColor;
     }
-
-//    public static void setConfigAppBgColor(Context context, int argbColor) {
-//        SharedPreferences.Editor editor = getSharedPreferences(context).edit();
-//        editor.putInt(context.getString(R.string.edit_page_color_key), argbColor);
-//        editor.apply();
-//    }
 
     public static int getConfigWidgetBgColor(Context context) {
         return getConfigAppBgColor(context);

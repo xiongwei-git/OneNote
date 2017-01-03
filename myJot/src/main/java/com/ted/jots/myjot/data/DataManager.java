@@ -16,7 +16,9 @@ public class DataManager {
 
     public static DataModel readData(Context context) {
         DataModel model = new DataModel();
-        String data = ConfigManager.getSharedPreferences(context).getString(KEY_FOR_SP_CONTENT, "");
+        String data = getLastVersionData(context);
+        if (TextUtils.isEmpty(data))
+            data = ConfigManager.getSharedPreferences(context).getString(KEY_FOR_SP_CONTENT, "");
         model.setContent(data);
         return model;
     }
@@ -29,6 +31,15 @@ public class DataManager {
         SharedPreferences.Editor editor = ConfigManager.getSharedPreferences(context).edit();
         editor.putString(KEY_FOR_SP_CONTENT, date);
         editor.apply();
+    }
+
+    private static String getLastVersionData(Context context) {
+        SharedPreferences sp = context.getSharedPreferences("sp_for_com_ted_my_jots", Context.MODE_PRIVATE);
+        if (sp.getBoolean("hasReadLastVersion", false)) {
+            return "";
+        }
+        sp.edit().putBoolean("hasReadLastVersion", true).apply();
+        return sp.getString(KEY_FOR_SP_CONTENT, "");
     }
 
 }
